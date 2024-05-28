@@ -5,6 +5,8 @@ export default function MainLayout({ children }: {
 }) {
   return <main className="px-24 pt-12 pb-0 h-[100svh] flex flex-col justify-center items-center">
     <Navbar />
-    {children}
+    <div>
+      {children}
+    </div>
   </main>
 }
