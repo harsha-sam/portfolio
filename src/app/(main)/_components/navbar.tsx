@@ -8,7 +8,7 @@ import { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuL
 export const Navbar = () => {
   const scrolled = useScrollTop();
   return (<NavigationMenu className={cn(
-    "md:justify-between fixed top-8 left-12 md:top-12 md:left-24 flex items-center w-[80%]",
+    "fixed top-0 flex justify-center md:justify-around w-[100%] bg-background h-16",
     scrolled && "border-b shadow-sm"
   )}>
     <NavigationMenuList className="justify-between">
