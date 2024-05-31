@@ -1,6 +1,4 @@
-import type { ComponentProps, ParentComponent } from "solid-js"
-import { For, mergeProps, Show, splitProps, type Component } from "solid-js"
-
+import { mergeProps, splitProps } from "solid-js"
 import { cn } from "@/lib/utils"
 
 export type TimelinePropsItem = Omit<
@@ -29,23 +27,24 @@ const Timeline: React.FC<TimelineProps> = (rawProps) => {
   return (
     <ul
       style={{
-        "padding-left": `${props.bulletSize / 2}px`
+        "paddingLeft": `${props.bulletSize / 2}px`
       }}
     >
-      <For each={props.items}>
-        {(item, index) => (
+      {
+        props.items.map((item, index) => (
           <TimelineItem
+            key={item.title + `timeline-item` + index}
             title={item.title}
             description={item.description}
             bullet={item.bullet}
-            isLast={index() === props.items.length - 1}
-            isActive={props.activeItem === -1 ? false : props.activeItem >= index() + 1}
-            isActiveBullet={props.activeItem === -1 ? false : props.activeItem >= index()}
+            isLast={index === props.items.length - 1}
+            isActive={props.activeItem === -1 ? false : props.activeItem >= index + 1}
+            isActiveBullet={props.activeItem === -1 ? false : props.activeItem >= index}
             bulletSize={props.bulletSize}
             lineSize={props.lineSize}
           />
-        )}
-      </For>
+        ))
+      }
     </ul>
   )
 }
@@ -76,14 +75,14 @@ const TimelineItem: React.FC<TimelineItemProps> = (props) => {
   ])
   return (
     <li
-      class={cn(
+      className={cn(
         "relative border-l pb-8 pl-8",
         local.isLast && "border-l-transparent pb-0",
         local.isActive && !local.isLast && "border-l-primary",
         local.class
       )}
       style={{
-        "border-left-width": `${local.lineSize}px`
+        "borderLeftWidth": `${local.lineSize}px`
       }}
       {...others}
     >
@@ -94,10 +93,12 @@ const TimelineItem: React.FC<TimelineItemProps> = (props) => {
       >
         {local.bullet}
       </TimelineItemBullet>
-      <TimelineItemTitle>{local.title}</TimelineItemTitle>
-      <Show when={local.description}>
-        <TimelineItemDescription>{local.description}</TimelineItemDescription>
-      </Show>
+      <TimelineItemTitle>
+        {local.title}
+      </TimelineItemTitle>
+      <TimelineItemDescription>
+        {local.description}
+      </TimelineItemDescription>
     </li>
   )
 }
@@ -112,7 +113,7 @@ export type TimelineItemBulletProps = {
 const TimelineItemBullet: React.FC<TimelineItemBulletProps> = (props) => {
   return (
     <div
-      class={cn(
+      className={cn(
         `absolute top-0 flex items-center justify-center rounded-full border bg-background`,
         props.isActive && "border-primary"
       )}
@@ -120,7 +121,7 @@ const TimelineItemBullet: React.FC<TimelineItemBulletProps> = (props) => {
         width: `${props.bulletSize}px`,
         height: `${props.bulletSize}px`,
         left: `${-props.bulletSize / 2 - props.lineSize / 2}px`,
-        "border-width": `${props.lineSize}px`
+        borderWidth: `${props.lineSize}px`
       }}
       aria-hidden="true"
     >
@@ -129,18 +130,17 @@ const TimelineItemBullet: React.FC<TimelineItemBulletProps> = (props) => {
   )
 }
 
-const TimelineItemTitle: React.FC = (props) => {
+const TimelineItemTitle: React.FC<React.PropsWithChildren> = (props) => {
   return <div className="mb-1 text-base font-semibold leading-none">
     {props.children}
   </div>
 }
 
-const TimelineItemDescription: Component<ComponentProps<"p">> = (props) => {
-  const [local, others] = splitProps(props, ["class", "children"])
+const TimelineItemDescription: React.FC<React.PropsWithChildren> = (props) => {
   return (
-    <p class={cn("text-sm text-muted-foreground", local.class)} {...others}>
-      {local.children}
-    </p>
+    <div className="text-sm text-muted-foreground">
+      {props.children}
+    </div>
   )
 }
 
