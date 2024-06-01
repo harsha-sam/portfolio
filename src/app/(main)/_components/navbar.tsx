@@ -33,20 +33,20 @@ export const Navbar = () => {
           </Link>
        </NavigationMenuItem>
       <NavigationMenuItem>
-          <Link href="/projects" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}
-              active={path === '/projects'}
-            >
-              Projects
-            </NavigationMenuLink>
-          </Link>
-       </NavigationMenuItem>
-      <NavigationMenuItem>
           <Link href="/blog" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}
               active={path === '/blog'}
             >
               Blog
+            </NavigationMenuLink>
+          </Link>
+       </NavigationMenuItem>
+      <NavigationMenuItem>
+          <Link href="/projects" legacyBehavior passHref>
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}
+              active={path === '/projects'}
+            >
+              Projects
             </NavigationMenuLink>
           </Link>
        </NavigationMenuItem>

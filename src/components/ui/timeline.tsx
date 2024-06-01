@@ -27,7 +27,8 @@ const Timeline: React.FC<TimelineProps> = (rawProps) => {
   return (
     <ul
       style={{
-        "paddingLeft": `${props.bulletSize / 2}px`
+        "paddingLeft": `${props.bulletSize / 2}px`,
+        "paddingBottom": "6rem"
       }}
     >
       {

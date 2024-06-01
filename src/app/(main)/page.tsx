@@ -1,19 +1,28 @@
 import Image from "next/image";
 import Link from "next/link";
-import { MoveUpRight } from "lucide-react";
+import Avatar from "@public/avatar.png";
+import AvatarDark from "@public/avatar-dark.png";
 import { Button } from "@/components/ui/button";
 
-export default function Home() {
+
+export default function HomePage() {
   return (
-    <div className="max-h-[calc(100svh-4rem)] mt-16">
+    <section className="max-h-[calc(90svh-4rem)] mt-16">
       <div className="flex flex-col md:flex-row items-center md:gap-10 h-full w-full">
         <div className="relative w-1/3 h-[300px]">
-          <Image src="/avatar.png" alt="a male avatar" fill
-            className="object-contain dark:hidden" 
+          <Image src={Avatar}
+            alt="a male avatar"
+            className="object-contain dark:hidden"
+            quality={100}
+            fill
           />
-          <Image src="/avatar-dark-1.png" 
-          alt="a male avatar" 
-          className="object-contain hidden dark:block" fill/>
+          <Image src={AvatarDark}
+            alt="a male avatar" 
+            className="object-contain hidden dark:block"
+            placeholder="blur"
+            quality={100}
+            fill
+          />
         </div>
         <div className="flex flex-col gap-2 justify-center items-center w-2/3">
           <h1 className="text-xl text-center sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
@@ -34,12 +43,11 @@ export default function Home() {
             <Button size="lg">
               <Link href="/projects" className="flex">
                 Check Work
-                <MoveUpRight className="ml-[2px] h-4 w-4 relative top-[2px]" />
               </Link>
               </Button>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
