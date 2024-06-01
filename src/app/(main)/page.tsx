@@ -35,16 +35,16 @@ export default function HomePage() {
             Software Engineer / Full Stack JavaScript Developer, keen on learning something new everyday.
           </h2>
           <div className="flex gap-2 md:gap-4">
-            <Button variant="secondary" size="lg">
-              <Link href="/about">
+            <Link href="/about">
+              <Button variant="secondary" size="lg">
                 Know More
-              </Link>
-            </Button>
-            <Button size="lg">
-              <Link href="/projects" className="flex">
-                Check Work
-              </Link>
               </Button>
+            </Link>
+            <Link href="/projects" className="flex">
+              <Button size="lg">
+                Explore My Work
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

@@ -6,16 +6,16 @@ import aboutMe from "@/data/about-me";
 
 export default function AboutMe() {
   const FooterBtns = <>
-    <Button className="w-1/3 mr-2" size="res">
-      <Link href="/about/#career" className="flex">
+    <Link href="/about/#career" className="w-1/3 mr-4">
+      <Button size="res">
         Dive Into My Career <MoveDown className="hidden md:block ml-[2px] h-4 w-4 self-baseline"/>
+      </Button>
       </Link>
-    </Button>
-    <Button variant="secondary" className="w-1/3 ml-2" size="res">
-      <Link href="/projects" className="flex">
+    <Link href="/projects" className="w-1/3">
+      <Button variant="secondary" size="res">
         Explore My Work
-      </Link>
-    </Button>
+      </Button>
+    </Link>
   </>
 
   return (

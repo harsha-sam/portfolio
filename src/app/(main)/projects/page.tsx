@@ -19,19 +19,20 @@ export default async function ProjectsPage() {
     },
   }) => { 
     return <>
-      <Button className="w-1/3 mr-2" size="res">
-        <Link href={btnA.href} rel="noopener noreferrer" target="_blank" className="flex">
+      <Link href={btnA.href} rel="noopener noreferrer" target="_blank" className="mr-2">
+        <Button size="res">
           {btnA.title}
           <MoveUpRight className="ml-[2px] h-4 w-4 relative top-[0.5px]" />
-        </Link>
-      </Button>
+        </Button>
+      </Link>
       {btnB &&
-       <Button variant="secondary" className="w-1/3 ml-2" size="res">
-        <Link href={btnB.href} rel="noopener noreferrer" target="_blank" className="flex">
-          {btnB.title}
-          <MoveUpRight className="ml-[2px] h-4 w-4 relative top-[0.5px]" />
+        <Link href={btnB.href} rel="noopener noreferrer" target="_blank" className="ml-2">
+          <Button variant="secondary" size="res">
+            {btnB.title}
+            <MoveUpRight className="ml-[2px] h-4 w-4 relative top-[0.5px]" />
+          </Button>
         </Link>
-      </Button>}
+      }
     </>
   }
 
