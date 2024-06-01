@@ -35,7 +35,7 @@ export default async function ProjectsPage() {
     </>
   }
 
-  const renderProjects = projects.map((proj) => {
+  const renderProjects = projects?.map((proj) => {
     return <CustomCard
       key={proj.id}
       title={proj.title}
@@ -53,7 +53,7 @@ export default async function ProjectsPage() {
 
   return <section className="max-h-[calc(90svh-4rem)] mt-16 pt-8 w-full">
     <div className="flex flex-col justify-center items-center gap-10 pt-16 pb-16">
-      {!projects.length ?
+      {!projects?.length ?
         <p>🤯 No Projects Found !</p>
         :
         renderProjects

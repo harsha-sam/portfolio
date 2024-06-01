@@ -4,7 +4,7 @@ import { formatNotionAPIResponse } from "@/lib/utils";
 import { Article } from "@/types";
 import { notion } from "@/db";
 
-export async function getBlogs(): Promise<Article[]>{
+export async function getBlogs(): Promise<Article[] | undefined>{
   try {
     const response: QueryDatabaseResponse = await notion.databases.query({
       database_id: process.env["NOTION_DATABASE"]!,
@@ -40,7 +40,7 @@ export async function getBlogs(): Promise<Article[]>{
   catch(e){console.log(e)}
 }
 
-export async function getProjects(): Promise<Article[]> {
+export async function getProjects(): Promise<Article[] | undefined> {
   try {
     const response = await notion.databases.query({
       database_id: process.env["NOTION_DATABASE"]!,
