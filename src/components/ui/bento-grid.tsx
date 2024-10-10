@@ -26,13 +26,24 @@ export const BentoGridItem = ({
   description,
   header,
   icon,
+  createdDate
 }: {
   className?: string;
   title?: string | React.ReactNode;
   description?: string | React.ReactNode;
   header?: React.ReactNode;
   icon?: React.ReactNode;
-}) => {
+  createdDate: string
+  }) => {
+    const date = new Date(createdDate);
+
+    // Format the date using toLocaleDateString with options
+    const formattedDate = date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+  
   return (
     <article
       className={cn(
@@ -41,7 +52,9 @@ export const BentoGridItem = ({
       )}
       tabIndex={0}
     >
-      {header}
+      <div className="w-full flex-grow">
+        {header}
+      </div>
       <div className="group-hover/bento:translate-x-2 transition duration-200">
         {icon}
         <div className="font-sans font-bold text-neutral-600 dark:text-neutral-200 mb-2 mt-2">
@@ -49,6 +62,9 @@ export const BentoGridItem = ({
         </div>
         <div className="font-sans font-normal text-neutral-600 text-xs dark:text-neutral-300">
           {description}
+        </div>
+        <div className="mt-4 font-sans font-bold text-neutral-600 text-xs dark:text-neutral-300">
+          {formattedDate}
         </div>
       </div>
     </article>

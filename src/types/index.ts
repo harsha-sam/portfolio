@@ -8,6 +8,7 @@ export type CareerType = {
 export type Article = {
   id: string;
   title: string;
+  createdDate: string;
   description: string;
   public_url: string;
   cover_url?: string;

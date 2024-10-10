@@ -32,7 +32,7 @@ export default function HomePage() {
             </span>
           </h1>
           <h2 className="text-center sm:text-md md:text-lg dark:text-slate-400 text-gray-700 mb-4">
-            Software Engineer / Full Stack JavaScript Developer, keen on learning something new everyday.
+            A Software Engineer / Full Stack JavaScript Developer, keen on learning something new everyday.
           </h2>
           <div className="flex gap-2 md:gap-4">
             <Link href="/about">

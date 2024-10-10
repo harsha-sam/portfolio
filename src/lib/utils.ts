@@ -41,9 +41,10 @@ export function formatNotionAPIResponse (response: QueryDatabaseResponse): Artic
         id: result.id,
         public_url: result.public_url,
         title,
+        createdDate: result.created_time,
         description,
         cover_url,
-        preview_url
+        preview_url,
       })
     }
   })
